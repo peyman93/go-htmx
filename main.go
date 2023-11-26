@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/peyman93/go-jwt/controllers"
 	"github.com/peyman93/go-jwt/initializers"
 	"log"
 )
@@ -16,11 +17,7 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET("/ping", func(context *gin.Context) {
-		context.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	r.POST("/signup", controllers.Signup)
 
 	err := r.Run()
 	if err != nil {
